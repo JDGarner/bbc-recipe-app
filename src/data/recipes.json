@@ -1,0 +1,34 @@
+{
+  "recipes": [
+    {
+      "name": "Lemon Chicken",
+      "cookingTime": "30 Minutes",
+      "mainIngredients": [
+        "Chicken",
+        "Lemon",
+        "Thyme"
+      ],
+      "imageURL": "lemon-chicken.png"
+    },
+    {
+      "name": "Beef Stroganoff",
+      "cookingTime": "30 Minutes",
+      "mainIngredients": [
+        "Beef",
+        "Mustard",
+        "Mushrooms"
+      ],
+      "imageURL": "beef-stroganoff.png"
+    },
+    {
+      "name": "Caesar Salad",
+      "cookingTime": "30 Minutes",
+      "mainIngredients": [
+        "Lettuce",
+        "Croutons",
+        "Parmesan"
+      ],
+      "imageURL": "caesar-salad.png"
+    }
+  ]
+}

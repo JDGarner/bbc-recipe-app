@@ -1,0 +1,46 @@
+To Do:
+
+- Add in React Router for Recipe page
+
+Recipe-List:
+- Create Recipe-List component -> DONE
+- Render Recipe-List-Item for each recipe in list -> DONE
+- Recipe Pagination
+- Make selecting Recipe link to Recipe page
+- "No recipes" message
+
+Recipe-List-Item:
+- Create Recipe-List-Item component -> DONE
+- Display recipe info
+
+Recipe:
+- Create Recipe Component
+- "Recipe doesnt exist" message
+- Display recipe info
+
+Recipe Filter:
+- Create Recipe-Filter Component
+- "no match" message
+- Filter by name
+- Filter by ingredient
+- Filter by cooking time
+- Filter for starred recipes
+
+Starred Recipes:
+-
+
+API:
+- Create db, put in data (PostgreSQL)
+- Create endpoint for ALL recipes
+- Create endpoint for recipe by id
+
+
+
+Components Needed:
+
+recipe-filter
+
+recipe-list
+  *recipe-list-item
+
+recipe-page
