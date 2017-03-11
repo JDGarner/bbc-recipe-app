@@ -14,7 +14,7 @@ Recipe-List-Item:
 - Display recipe info
 
 Recipe:
-- Create Recipe Component
+- Create Recipe Component -> DONE
 - "Recipe doesnt exist" message
 - Display recipe info
 

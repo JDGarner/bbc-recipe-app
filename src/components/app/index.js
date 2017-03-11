@@ -1,5 +1,5 @@
-import React from 'react';
-import RecipeList from '../recipe-list';
+import React from 'react'
+import RecipeList from '../recipe-list'
 import recipesJSON from '../../data/recipes.json'
 
 class App extends React.Component {

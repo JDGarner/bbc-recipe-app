@@ -8,16 +8,12 @@ class RecipeList extends React.Component {
       <ul className="recipe-list">
         {
           this.props.recipes.map((recipe, key) => {
-            this.renderRecipe(recipe, key)
+            return (
+              <RecipeListItem recipe={recipe} key={key} />
+            );
           })
         }
       </ul>
-    );
-  }
-
-  renderRecipe(recipe, key) {
-    return (
-      <RecipeListItem recipe={recipe} key={key} />
     );
   }
 }
