@@ -15,7 +15,7 @@ Recipe-List-Item:
 
 Recipe:
 - Create Recipe Component -> DONE
-- "Recipe doesnt exist" message
+- "Recipe doesn't exist" message
 - Display recipe info
 
 Recipe Filter:
@@ -30,9 +30,8 @@ Starred Recipes:
 -
 
 API:
-- Create db, put in data (PostgreSQL)
-- Create endpoint for ALL recipes
-- Create endpoint for recipe by id
+- Create API call for all recipes
+- Create API call for recipe by id
 
 
 

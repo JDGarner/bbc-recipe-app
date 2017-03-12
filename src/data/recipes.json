@@ -1,6 +1,7 @@
 {
   "recipes": [
     {
+      "id": 1,
       "name": "Lemon Chicken",
       "cookingTime": "30 Minutes",
       "mainIngredients": [
@@ -11,6 +12,7 @@
       "imageURL": "lemon-chicken.png"
     },
     {
+      "id": 2,
       "name": "Beef Stroganoff",
       "cookingTime": "30 Minutes",
       "mainIngredients": [
@@ -21,6 +23,7 @@
       "imageURL": "beef-stroganoff.png"
     },
     {
+      "id": 3,
       "name": "Caesar Salad",
       "cookingTime": "30 Minutes",
       "mainIngredients": [

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server"
+    "start": "NODE_ENV=development webpack-dev-server",
+    "start-prod": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "Jamie Garner",
@@ -18,7 +19,7 @@
     "express": "^4.15.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "^4.0.0",
+    "react-router-dom": "^4.0.0",
     "webpack": "^2.2.1"
   },
   "devDependencies": {

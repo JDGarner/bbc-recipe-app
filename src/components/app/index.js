@@ -1,19 +1,17 @@
 import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Recipe from '../recipe'
 import RecipeList from '../recipe-list'
-import recipesJSON from '../../data/recipes.json'
 
 class App extends React.Component {
-
-  constructor() {
-    super();
-    this.state = {
-      recipes: recipesJSON.recipes
-    };
-  }
-
   render() {
     return (
-      <RecipeList recipes={this.state.recipes} />
+      <Router>
+        <div>
+          <Route exact path="/" component={RecipeList}/>
+          <Route path="/recipe/:recipeId" component={Recipe}/>
+        </div>
+      </Router>
     );
   }
 }

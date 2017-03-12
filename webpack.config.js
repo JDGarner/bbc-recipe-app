@@ -13,6 +13,7 @@ var config = {
   },
   devServer: {
     inline: true,
+    historyApiFallback: true,
     contentBase: './dist',
     port: 3000
   },

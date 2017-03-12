@@ -1,11 +1,14 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 class RecipeListItem extends React.Component {
 
   render() {
     return (
       <li>
-        {this.props.recipe.name}
+        <Link to={`/recipe/${this.props.recipe.id}`}>
+          {this.props.recipe.name}
+        </Link>
       </li>
     );
   }
