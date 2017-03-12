@@ -16,4 +16,16 @@ describe('<Recipe/>', function () {
     const recipe = shallow(<Recipe match={props.match}/>);
     expect(recipe).to.exist;
   });
+
+  it('should display message when given invalid id', function () {
+    // TO DO
+  });
+
+  it('should display recipe info for given recipe', function () {
+    // TO DO
+  });
+
+  it('should display recipe ingredients for given recipe', function () {
+    // TO DO
+  });
 });
