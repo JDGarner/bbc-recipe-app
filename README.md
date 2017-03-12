@@ -77,6 +77,6 @@ Filter for starred recipes:
 
 ## Third Party Code:
 
-node_modules/*
+src/stylesheets/reset.scss - http://meyerweb.com/eric/tools/css/reset/
 
 src/test-helpers/browser.js - https://semaphoreci.com/community/tutorials/testing-react-components-with-enzyme-and-mocha

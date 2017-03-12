@@ -23,10 +23,10 @@ Recipe:
 - Styling
 
 Recipe Filter:
-- Create Recipe-Filter Component
+- Create Recipe-Filter Component -> DONE
 - "no match" message
-- Filter by name
-- Filter by ingredient
+- Filter by name -> DONE
+- Filter by ingredient -> DONE
 - Filter by cooking time
 - Filter for starred recipes
 - Styling
@@ -41,7 +41,7 @@ API:
 - Create API call for recipe by id -> DONE
 
 Tests:
-- Setup testing framework
+- Setup testing framework -> DONE
 - Test Recipe-List component
 - Test Recipe-List-Item component
 - Test Recipe component

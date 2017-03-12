@@ -1,5 +1,6 @@
 import React from 'react'
 import RecipeListItem from '../recipe-list-item'
+import RecipeFilter from '../recipe-filter'
 import config from '../../config'
 import Request from 'superagent'
 
@@ -7,7 +8,8 @@ class RecipeList extends React.Component {
   constructor() {
     super();
     this.state = {
-      recipes: [],
+      allRecipes: [],
+      displayedRecipes: [],
       recipesLoaded: false
     };
   }
@@ -20,25 +22,48 @@ class RecipeList extends React.Component {
         console.log('There was an error fetching from API', err);
       } else if (response) {
         this.setState({
-          recipes: response.body,
+          allRecipes: response.body,
+          displayedRecipes: response.body,
           recipesLoaded: true
         });
       }
     });
   }
 
+  filterRecipes(filterString) {
+    if (filterString) {
+      this.setState({
+        displayedRecipes: this.getFilteredRecipes(filterString)
+      });
+    } else {
+      this.setState({
+        displayedRecipes: this.state.allRecipes
+      });
+    }
+  }
+
+  getFilteredRecipes(filterString) {
+    return this.state.allRecipes.filter((recipe) => {
+      return recipe.name.toLowerCase().includes(filterString.toLowerCase()) ||
+        recipe.mainingredients.toLowerCase().includes(filterString.toLowerCase())
+    });
+  }
+
   render() {
     if (this.state.recipesLoaded) {
       return (
-        <ul className="recipe-list">
-          {
-            this.state.recipes.map((recipe, key) => {
-              return (
-                <RecipeListItem recipe={recipe} key={key} />
-              );
-            })
-          }
-        </ul>
+        <div className="recipe-list">
+          <RecipeFilter filterRecipes={this.filterRecipes.bind(this)} />
+          <ul>
+            {
+              this.state.displayedRecipes.map((recipe, key) => {
+                return (
+                  <RecipeListItem recipe={recipe} key={key} />
+                );
+              })
+            }
+          </ul>
+        </div>
       );
     } else {
       return null;
