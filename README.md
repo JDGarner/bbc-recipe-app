@@ -1,6 +1,25 @@
 BBC Recipe App (Technical Challenge)
 ---
 
+
+### Setup for Dev
+
+```
+npm install
+npm run build-dev
+npm run dev
+```
+
+### Run Tests
+
+```
+npm run test
+```
+
+
+## Requirements
+---
+
 ### Recipe List Page
 
 No recipes:
@@ -53,3 +72,11 @@ Unstar a recipe:
 Filter for starred recipes:
 - NONE - Display "Sorry, you don't currently have any starred recipes, get started by starring recipes you like"
 - SOME - Display starred recipes
+---
+
+
+## Third Party Code:
+
+node_modules/*
+
+src/test-helpers/browser.js - https://semaphoreci.com/community/tutorials/testing-react-components-with-enzyme-and-mocha

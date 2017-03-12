@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "test": "mocha -w src/test-helpers/browser.js src/components/*/tests/*.spec.js",
     "build-dev": "webpack --config webpack.development.config.js",
     "dev": "webpack-dev-server --config webpack.development.config.js",
     "build-prod": "webpack --config webpack.production.config.js",
@@ -30,6 +31,11 @@
     "webpack": "^2.2.1"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "enzyme": "^2.7.1",
+    "jsdom": "^9.11.0",
+    "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.4.2",
     "webpack-dev-server": "^2.4.1"
   }
 }

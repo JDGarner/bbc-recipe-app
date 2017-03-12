@@ -47,8 +47,8 @@ Tests:
 - Test Recipe-Filter component
 
 Deployment:
-- Create Prod webpack config 
-- Deploy to Heroku
+- Create Prod webpack config -> DONE
+- Deploy to Heroku -> DONE
 
 
 
