@@ -1,22 +1,25 @@
 To Do:
 
-- Add in React Router for Recipe page
+- Add in React Router for Recipe page -> DONE
 
 Recipe-List:
 - Create Recipe-List component -> DONE
 - Render Recipe-List-Item for each recipe in list -> DONE
-- Recipe Pagination
-- Make selecting Recipe link to Recipe page
+- Make selecting Recipe link to Recipe page -> DONE
+- Recipe Pagination (10 per page)
 - "No recipes" message
+- Styling
 
 Recipe-List-Item:
 - Create Recipe-List-Item component -> DONE
 - Display recipe info
+- Styling
 
 Recipe:
 - Create Recipe Component -> DONE
 - "Recipe doesn't exist" message
 - Display recipe info
+- Styling
 
 Recipe Filter:
 - Create Recipe-Filter Component
@@ -25,13 +28,27 @@ Recipe Filter:
 - Filter by ingredient
 - Filter by cooking time
 - Filter for starred recipes
+- Styling
 
 Starred Recipes:
--
+- Create star component
+- Store star data in local storage
+- Styling
 
 API:
-- Create API call for all recipes
+- Create API call for all recipes -> DONE
 - Create API call for recipe by id
+
+Tests:
+- Setup testing framework
+- Test Recipe-List component
+- Test Recipe-List-Item component
+- Test Recipe component
+- Test Recipe-Filter component
+
+Deployment:
+- Create Prod webpack config 
+- Deploy to Heroku
 
 
 

@@ -1,19 +1,35 @@
-import React from 'react';
-import { Route, Link } from 'react-router-dom'
-import RecipeListItem from '../recipe-list-item';
-import Recipe from '../recipe';
-import recipesJSON from '../../data/recipes.json'
+import React from 'react'
+import RecipeListItem from '../recipe-list-item'
+import config from '../../config'
+import Request from 'superagent'
 
 class RecipeList extends React.Component {
   constructor() {
     super();
     this.state = {
-      recipes: recipesJSON.recipes
+      recipes: [],
+      recipesLoaded: false
     };
   }
 
+  componentDidMount() {
+    var url = config.recipeApiHostProd + '/recipes';
+
+    Request.get(url).end((err, response) => {
+      if (err) {
+        console.log('There was an error fetching from API', err);
+      } else if (response) {
+        this.setState({
+          recipes: response.body,
+          recipesLoaded: true
+        });
+      }
+    });
+  }
+
   render() {
-    return (
+    if (this.state.recipesLoaded) {
+      return (
         <ul className="recipe-list">
           {
             this.state.recipes.map((recipe, key) => {
@@ -23,7 +39,10 @@ class RecipeList extends React.Component {
             })
           }
         </ul>
-    );
+      );
+    } else {
+      return null;
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 const config = {
-  "recipeApiHostDev": "https://localhost:3001",
+  "recipeApiHostDev": "http://localhost:3001",
   "recipeApiHostProd": "https://bbc-recipe-api.herokuapp.com"
 };
 
