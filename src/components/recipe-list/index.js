@@ -54,20 +54,41 @@ class RecipeList extends React.Component {
       return (
         <div className="recipe-list">
           <RecipeFilter filterRecipes={this.filterRecipes.bind(this)} />
-          <ul>
-            {
-              this.state.displayedRecipes.map((recipe, key) => {
-                return (
-                  <RecipeListItem recipe={recipe} key={key} />
-                );
-              })
-            }
-          </ul>
+          { this.state.allRecipes.length > 0 ?
+            this.renderRecipes() :
+            this.renderNoRecipesMessage() }
         </div>
       );
     } else {
-      return null;
+      return (
+        <div>Loading recipes...</div>
+      );
     }
+  }
+
+  renderNoRecipesMessage() {
+    return (
+      <div>Sorry, we currently have no recipes for you</div>
+    );
+  }
+
+  renderRecipes() {
+    if (this.state.displayedRecipes.length > 0) {
+      return (
+        <ul> {
+          this.state.displayedRecipes.map((recipe, key) => {
+            return (
+              <RecipeListItem recipe={recipe} key={key} />
+            );
+          })
+        } </ul>
+      );
+    } else {
+      return (
+        <div>Sorry, nothing matched your filter term</div>
+      );
+    }
+
   }
 }
 

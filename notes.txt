@@ -7,7 +7,7 @@ Recipe-List:
 - Render Recipe-List-Item for each recipe in list -> DONE
 - Make selecting Recipe link to Recipe page -> DONE
 - Recipe Pagination (10 per page)
-- "No recipes" message
+- "No recipes" message -> DONE
 - Styling -> DONE
 
 Recipe-List-Item:
@@ -24,7 +24,7 @@ Recipe:
 
 Recipe Filter:
 - Create Recipe-Filter Component -> DONE
-- "no match" message
+- "no match" message -> DONE
 - Filter by name -> DONE
 - Filter by ingredient -> DONE
 - Filter by cooking time
