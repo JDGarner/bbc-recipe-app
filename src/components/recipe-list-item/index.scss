@@ -1,0 +1,17 @@
+.recipe-list-item {
+  text-align: left;
+  padding: 10px 0;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+  }
+
+  h3 {
+    padding: 3px 0;
+  }
+
+  &:hover {
+    background: #eee;
+  }
+}

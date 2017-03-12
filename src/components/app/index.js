@@ -7,7 +7,8 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="app">
+          <h1>BBC Recipe App</h1>
           <Route exact path="/" component={RecipeList}/>
           <Route path="/recipe/:recipeId" component={Recipe}/>
         </div>
