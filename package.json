@@ -4,13 +4,19 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "start": "NODE_ENV=development webpack-dev-server",
-    "start-prod": "NODE_ENV=production node server.js"
+    "build-dev": "webpack --config webpack.development.config.js",
+    "dev": "webpack-dev-server --config webpack.development.config.js",
+    "build-prod": "webpack --config webpack.production.config.js",
+    "start": "node server.js",
+    "postinstall": "webpack --config webpack.production.config.js"
   },
   "keywords": [],
   "author": "Jamie Garner",
   "license": "ISC",
+  "engines": {
+    "node": "7.4.0",
+    "npm": "4.0.5"
+  },
   "dependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",

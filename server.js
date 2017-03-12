@@ -2,8 +2,7 @@ const express = require('express');
 var path = require('path');
 const app = express();
 
-var isProduction = process.env.NODE_ENV === 'production';
-var port = (isProduction && process.env.PORT) ? process.env.PORT : 3000;
+var port = process.env.PORT ? process.env.PORT : 3000;
 
 app.use(express.static(__dirname + '/dist'));
 
