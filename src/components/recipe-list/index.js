@@ -13,7 +13,7 @@ class RecipeList extends React.Component {
   }
 
   componentDidMount() {
-    var url = config.recipeApiHostProd + '/recipes';
+    var url = config.recipeApiHost + '/recipes';
 
     Request.get(url).end((err, response) => {
       if (err) {

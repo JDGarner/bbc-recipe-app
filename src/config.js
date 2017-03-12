@@ -1,6 +1,6 @@
 const config = {
-  "recipeApiHostDev": "http://localhost:3001",
-  "recipeApiHostProd": "https://bbc-recipe-api.herokuapp.com"
+  "recipeApiHost": "https://bbc-recipe-api.herokuapp.com"
+  // "recipeApiHost": "http://localhost:3001"
 };
 
 export default config;

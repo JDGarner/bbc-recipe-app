@@ -8,17 +8,18 @@ Recipe-List:
 - Make selecting Recipe link to Recipe page -> DONE
 - Recipe Pagination (10 per page)
 - "No recipes" message
-- Styling
+- Styling -> DONE
 
 Recipe-List-Item:
 - Create Recipe-List-Item component -> DONE
-- Display recipe info
-- Styling
+- Display recipe info -> DONE
+- Styling -> DONE
 
 Recipe:
 - Create Recipe Component -> DONE
 - "Recipe doesn't exist" message
-- Display recipe info
+- Display recipe info -> DONE
+- Display Ingredients
 - Styling
 
 Recipe Filter:
@@ -37,7 +38,7 @@ Starred Recipes:
 
 API:
 - Create API call for all recipes -> DONE
-- Create API call for recipe by id
+- Create API call for recipe by id -> DONE
 
 Tests:
 - Setup testing framework
