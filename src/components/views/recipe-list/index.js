@@ -1,18 +1,36 @@
 import React from 'react'
 import RecipeListItem from '../recipe-list-item'
 import PageButtons from '../page-buttons'
+import Paginator from '../../paginator'
 
 export default class RecipeList extends React.Component {
 
-  getCurrentPageRecipes(recipes, pageNumber) {
-    return recipes.slice(
-      pageNumber * this.props.pageSize,
-      pageNumber * this.props.pageSize + this.props.pageSize
-    );
+  getCurrentPageRecipes() {
+    return Paginator.getCurrentPageItems(
+      this.props.recipes,
+      this.props.currentPage,
+      this.props.pageSize
+    )
   }
 
   isMultiplePages() {
-    return this.props.recipes.length > this.props.pageSize
+    return Paginator.isMultiplePages(this.props.recipes, this.props.pageSize)
+  }
+
+  isFirstPage() {
+    return Paginator.isFirstPage(
+      this.props.recipes,
+      this.props.currentPage,
+      this.props.pageSize
+    )
+  }
+
+  isLastPage() {
+    return Paginator.isLastPage(
+      this.props.recipes,
+      this.props.currentPage,
+      this.props.pageSize
+    )
   }
 
   render() {
@@ -24,13 +42,10 @@ export default class RecipeList extends React.Component {
   }
 
   renderRecipes() {
-    let currentPageRecipes =
-      this.getCurrentPageRecipes(this.props.recipes, this.props.currentPage);
-
     return (
       <div className="recipe-list-content">
         <ul className="recipe-list"> {
-          currentPageRecipes.map((recipe, key) => {
+          this.getCurrentPageRecipes().map((recipe, key) => {
             return (
               <RecipeListItem recipe={recipe} key={key} />
             );
@@ -46,7 +61,9 @@ export default class RecipeList extends React.Component {
       return (
         <PageButtons
           goToPreviousPage={this.props.goToPreviousPage}
-          goToNextPage={this.props.goToNextPage} />
+          goToNextPage={this.props.goToNextPage}
+          isFirstPage={this.isFirstPage()}
+          isLastPage={this.isLastPage()} />
       );
     } else {
       return null;
