@@ -23,6 +23,7 @@ Recipe:
 - "Recipe doesn't exist" message
 - Display recipe info -> DONE
 - Display Ingredients
+- Display image
 - Styling
 
 Recipe Filter:
@@ -30,7 +31,7 @@ Recipe Filter:
 - "no match" message -> DONE
 - Filter by name -> DONE
 - Filter by ingredient -> DONE
-- Filter by cooking time
+- Filter by cooking time -> DONE
 - Filter for starred recipes
 - Styling
 

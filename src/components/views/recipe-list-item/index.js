@@ -8,7 +8,7 @@ export default class RecipeListItem extends React.Component {
       <li className="recipe-list-item">
         <Link to={`/recipe/${this.props.recipe.id}`}>
           <h3>Name: {this.props.recipe.name}</h3>
-          <h3>Cooking Time: {this.props.recipe.cookingtime}</h3>
+          <h3>Cooking Time: {this.props.recipe.cookingtime} Minutes</h3>
           <h3>Main Ingredients: {this.props.recipe.mainingredients}</h3>
         </Link>
       </li>

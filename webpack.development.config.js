@@ -26,6 +26,11 @@ var config = {
         loader: 'babel-loader'
       },
       {
+        test: /\.css$/,
+        include: path.join(__dirname, 'node_modules/react-select'),
+        loader: 'style-loader!css-loader'
+      },
+      {
         test: /\.scss$/,
         include: path.join(__dirname, 'src'),
         loader: "style-loader!css-loader!postcss-loader!sass-loader"

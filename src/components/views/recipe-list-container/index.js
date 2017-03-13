@@ -12,7 +12,9 @@ class RecipeListContainer extends React.Component {
       displayedRecipes: [],
       currentPage: 0,
       recipesPerPage: 10,
-      recipesLoaded: false
+      recipesLoaded: false,
+      filterString: '',
+      cookingTimeFilter: Number.POSITIVE_INFINITY
     };
   }
 
@@ -32,22 +34,34 @@ class RecipeListContainer extends React.Component {
     });
   }
 
-  filterRecipes(filterString) {
-    const filteredRecipes = filterString ?
-      this.getFilteredRecipes(filterString) :
-      this.state.allRecipes;
-
+  updateFilterString(filterString) {
     this.setState({
-      displayedRecipes: filteredRecipes,
+      filterString,
       currentPage: 0,
     });
   }
 
-  getFilteredRecipes(filterString) {
-    return this.state.allRecipes.filter((recipe) => {
-      return recipe.name.toLowerCase().includes(filterString.toLowerCase()) ||
-        recipe.mainingredients.toLowerCase().includes(filterString.toLowerCase())
+  updateMaxCookingTime(cookingTimeFilter) {
+    this.setState({
+      cookingTimeFilter,
+      currentPage: 0,
     });
+  }
+
+  applyFilters() {
+    return this.state.allRecipes.filter((recipe) => {
+      return this.recipeContainsString(recipe, this.state.filterString) &&
+        this.recipeWithinMaxCookingTime(recipe, this.state.cookingTimeFilter)
+    });
+  }
+
+  recipeContainsString(recipe, filterString) {
+    return recipe.name.toLowerCase().includes(filterString.toLowerCase()) ||
+      recipe.mainingredients.toLowerCase().includes(filterString.toLowerCase())
+  }
+
+  recipeWithinMaxCookingTime(recipe, time) {
+    return recipe.cookingtime <= time
   }
 
   goToNextPage() {
@@ -70,7 +84,9 @@ class RecipeListContainer extends React.Component {
     if (this.state.recipesLoaded) {
       return (
         <div className="recipe-list-container">
-          <RecipeFilter filterRecipes={this.filterRecipes.bind(this)} />
+          <RecipeFilter
+            updateFilterString={this.updateFilterString.bind(this)}
+            updateMaxCookingTime={this.updateMaxCookingTime.bind(this)} />
           { this.recipesAvailable() ?
             this.renderRecipeList() :
             this.renderNoRecipesMessage() }
@@ -84,9 +100,11 @@ class RecipeListContainer extends React.Component {
   }
 
   renderRecipeList() {
+    let filteredRecipes = this.applyFilters();
+
     return (
       <RecipeList
-        recipes={this.state.displayedRecipes}
+        recipes={filteredRecipes}
         goToNextPage={this.goToNextPage.bind(this)}
         goToPreviousPage={this.goToPreviousPage.bind(this)}
         currentPage={this.state.currentPage}

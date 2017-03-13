@@ -33,7 +33,7 @@ export default class Recipe extends React.Component {
       return (
         <div className="recipe">
           <h3>Name: {this.state.recipe.name}</h3>
-          <h3>Cooking Time: {this.state.recipe.cookingtime}</h3>
+          <h3>Cooking Time: {this.state.recipe.cookingtime} Minutes</h3>
           <h3>Main Ingredients: {this.state.recipe.mainingredients}</h3>
           <Link to="/">Back to List</Link>
         </div>
