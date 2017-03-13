@@ -4,7 +4,7 @@ import RecipeFilter from '../recipe-filter'
 import config from '../../config'
 import Request from 'superagent'
 
-class RecipeList extends React.Component {
+export default class RecipeList extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -25,21 +25,36 @@ class RecipeList extends React.Component {
       } else if (response) {
         this.setState({
           allRecipes: response.body,
-          currentPageRecipes: this.pageRecipes(response.body),
+          currentPageRecipes: this.pageRecipes(response.body, this.state.currentPage),
           recipesLoaded: true
         });
       }
     });
   }
 
-  pageRecipes(recipes) {
-    let currentPage = this.state.currentPage;
+  pageRecipes(recipes, pageNumber) {
     let recipesPerPage = this.state.recipesPerPage;
 
     return recipes.slice(
-      currentPage * recipesPerPage,
-      currentPage * recipesPerPage + recipesPerPage
+      pageNumber * recipesPerPage,
+      pageNumber * recipesPerPage + recipesPerPage
     );
+  }
+
+  goToNextPage() {
+    let newPage = this.state.currentPage + 1;
+    this.setState({
+      currentPage: newPage,
+      currentPageRecipes: this.pageRecipes(this.state.allRecipes, newPage)
+    });
+  }
+
+  goToPreviousPage() {
+    let newPage = this.state.currentPage - 1;
+    this.setState({
+      currentPage: newPage,
+      currentPageRecipes: this.pageRecipes(this.state.allRecipes, newPage)
+    });
   }
 
   filterRecipes(filterString) {
@@ -62,10 +77,10 @@ class RecipeList extends React.Component {
   render() {
     if (this.state.recipesLoaded) {
       return (
-        <div className="recipe-list">
+        <div className="recipe-list-container">
           <RecipeFilter filterRecipes={this.filterRecipes.bind(this)} />
           { this.state.allRecipes.length > 0 ?
-            this.renderRecipes() :
+            this.renderRecipeListContent() :
             this.renderNoRecipesMessage() }
         </div>
       );
@@ -74,6 +89,24 @@ class RecipeList extends React.Component {
         <div>Loading recipes...</div>
       );
     }
+  }
+
+  renderRecipeListContent() {
+    return (
+      <div className="recipe-list-content">
+        { this.renderRecipes() }
+        { this.renderPageButtons() }
+      </div>
+    );
+  }
+
+  renderPageButtons() {
+    return (
+      <div className="page-buttons">
+        <span onClick={this.goToPreviousPage.bind(this)}>Previous Page</span>
+        <span onClick={this.goToNextPage.bind(this)}>Next Page</span>
+      </div>
+    );
   }
 
   renderNoRecipesMessage() {
@@ -85,7 +118,7 @@ class RecipeList extends React.Component {
   renderRecipes() {
     if (this.state.currentPageRecipes.length > 0) {
       return (
-        <ul> {
+        <ul className="recipe-list"> {
           this.state.currentPageRecipes.map((recipe, key) => {
             return (
               <RecipeListItem recipe={recipe} key={key} />
@@ -101,5 +134,3 @@ class RecipeList extends React.Component {
 
   }
 }
-
-export default RecipeList;

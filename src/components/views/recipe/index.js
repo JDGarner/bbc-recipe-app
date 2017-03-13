@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import config from '../../config'
 import Request from 'superagent'
 
-class Recipe extends React.Component {
+export default class Recipe extends React.Component {
 
   constructor() {
     super();
@@ -43,5 +43,3 @@ class Recipe extends React.Component {
     }
   }
 }
-
-export default Recipe;

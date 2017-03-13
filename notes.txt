@@ -7,7 +7,8 @@ Recipe-List:
 - Render Recipe-List-Item for each recipe in list -> DONE
 - Make selecting Recipe link to Recipe page -> DONE
 - Recipe Pagination (10 per page) -> DONE
-- Recipe Pagination buttons
+- Recipe Pagination buttons (only if more than 10 recipes available)
+- Disable page buttons if no next/prev page available
 - "No recipes" message -> DONE
 - Styling -> DONE
 - Refactor into Recipe-List-Container and Recipe-List (container and presentational components)

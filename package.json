@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha -w src/test-helpers/browser.js src/components/*/tests/*.spec.js",
+    "test": "mocha -w src/test-helpers/browser.js src/components/views/*/tests/*.spec.js",
     "build-dev": "webpack --config webpack.development.config.js",
     "dev": "webpack-dev-server --config webpack.development.config.js",
     "build-prod": "webpack --config webpack.production.config.js",

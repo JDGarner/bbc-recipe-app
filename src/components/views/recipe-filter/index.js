@@ -1,6 +1,6 @@
 import React from 'react'
 
-class RecipeFilter extends React.Component {
+export default class RecipeFilter extends React.Component {
 
   onFilterChange(event) {
     this.props.filterRecipes(event.target.value);
@@ -17,5 +17,3 @@ class RecipeFilter extends React.Component {
     );
   }
 }
-
-export default RecipeFilter;
