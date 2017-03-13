@@ -5,29 +5,29 @@ export default class PageButtons extends React.Component {
   render() {
     return (
       <div className="page-buttons">
-        { this.renderNextPageButton() }
         { this.renderPreviousPageButton() }
+        { this.renderNextPageButton() }
       </div>
     );
   }
 
   renderNextPageButton() {
-    if (!this.props.isLastPage) {
-      return (
-        <span onClick={this.props.goToNextPage}>Next Page</span>
-      );
-    } else {
-      return null;
-    }
+    return (
+      <button
+        onClick={this.props.goToNextPage}
+        disabled={this.props.isLastPage}>
+        Next Page
+      </button>
+    );
   }
 
   renderPreviousPageButton() {
-    if (!this.props.isFirstPage) {
-      return (
-        <span onClick={this.props.goToPreviousPage}>Previous Page</span>
-      );
-    } else {
-      return null;
-    }
+    return (
+      <button
+        onClick={this.props.goToPreviousPage}
+        disabled={this.props.isFirstPage}>
+        Previous Page
+      </button>
+    );
   }
 }
