@@ -6,7 +6,8 @@ export default class RecipeFilter extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectValue: null
+      selectValue: null,
+      checkBoxChecked: false
     };
 
     this.maxCookingTimeOptions = [
@@ -29,6 +30,13 @@ export default class RecipeFilter extends React.Component {
     this.props.updateMaxCookingTime(select.value);
   }
 
+  onChangeShowStarred() {
+    this.setState({
+      checkBoxChecked: !this.state.checkBoxChecked
+    });
+    this.props.updateShowStarred(!this.state.checkBoxChecked);
+  }
+
   render() {
     return (
       <div className="recipe-filter">
@@ -42,6 +50,14 @@ export default class RecipeFilter extends React.Component {
           options={this.maxCookingTimeOptions}
           onChange={this.onChangeMaxCookingTime.bind(this)}
           placeholder="Maximum Cooking Time" />
+        <label>
+          Show Favourite Recipes:
+          <input
+            type="checkbox"
+            value={this.state.checkBoxChecked}
+            checked={this.state.checkBoxChecked}
+            onChange={this.onChangeShowStarred.bind(this)} />
+        </label>
       </div>
     );
   }

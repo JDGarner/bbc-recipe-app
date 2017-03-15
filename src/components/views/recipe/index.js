@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import config from '../../config'
+import RecipeStar from '../recipe-star'
 import Request from 'superagent'
 
 export default class Recipe extends React.Component {
@@ -59,6 +60,7 @@ export default class Recipe extends React.Component {
         <h3>Ingredients:</h3>
         { this.renderIngredients(recipe.ingredients) }
         <Link to="/">Back to List</Link>
+        <RecipeStar recipeId={recipe.id} />
       </div>
     );
   }
@@ -77,6 +79,5 @@ export default class Recipe extends React.Component {
     } else {
       return null;
     }
-
   }
 }

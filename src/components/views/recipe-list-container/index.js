@@ -4,7 +4,7 @@ import RecipeFilter from '../recipe-filter'
 import config from '../../config'
 import Request from 'superagent'
 
-class RecipeListContainer extends React.Component {
+export default class RecipeListContainer extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -14,6 +14,7 @@ class RecipeListContainer extends React.Component {
       recipesPerPage: 10,
       recipesNotFound: false,
       filterString: '',
+      showOnlyStarredRecipes: false,
       cookingTimeFilter: Number.POSITIVE_INFINITY
     };
   }
@@ -52,10 +53,18 @@ class RecipeListContainer extends React.Component {
     });
   }
 
+  updateShowStarred(showOnlyStarredRecipes) {
+    this.setState({
+      showOnlyStarredRecipes,
+      currentPage: 0,
+    });
+  }
+
   applyFilters() {
     return this.state.allRecipes.filter((recipe) => {
       return this.recipeContainsString(recipe, this.state.filterString) &&
-        this.recipeWithinMaxCookingTime(recipe, this.state.cookingTimeFilter)
+        this.recipeWithinMaxCookingTime(recipe, this.state.cookingTimeFilter) &&
+        this.recipeIsStarred(recipe, this.state.showOnlyStarredRecipes)
     });
   }
 
@@ -66,6 +75,11 @@ class RecipeListContainer extends React.Component {
 
   recipeWithinMaxCookingTime(recipe, time) {
     return recipe.cookingtime <= time
+  }
+
+  recipeIsStarred(recipe, showOnlyStarred) {
+    let starredRecipes = JSON.parse(localStorage.getItem('starredRecipes')) || [];
+    return !showOnlyStarred || starredRecipes.includes(recipe.id);
   }
 
   goToNextPage() {
@@ -90,6 +104,7 @@ class RecipeListContainer extends React.Component {
         <div className="recipe-list-container">
           <RecipeFilter
             updateFilterString={this.updateFilterString.bind(this)}
+            updateShowStarred={this.updateShowStarred.bind(this)}
             updateMaxCookingTime={this.updateMaxCookingTime.bind(this)} />
           { this.renderRecipeList() }
         </div>
@@ -126,5 +141,3 @@ class RecipeListContainer extends React.Component {
     );
   }
 }
-
-export default RecipeListContainer;

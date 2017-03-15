@@ -32,12 +32,12 @@ Recipe Filter:
 - Filter by name -> DONE
 - Filter by ingredient -> DONE
 - Filter by cooking time -> DONE
-- Filter for starred recipes
+- Filter for starred recipes -> DONE
 - Styling -> DONE
 
 Starred Recipes:
-- Create star component
-- Store star data in local storage
+- Create star component -> DONE
+- Store star data in local storage -> DONE
 - Styling
 
 API:
@@ -46,7 +46,7 @@ API:
 
 Other:
 - Add images to cdn -> DONE
-- Add more recipes/ingredients to db
+- Add more recipes/ingredients to db -> DONE
 
 Tests:
 - Setup testing framework -> DONE
