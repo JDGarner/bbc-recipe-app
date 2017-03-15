@@ -20,7 +20,7 @@ Recipe-List-Item:
 
 Recipe:
 - Create Recipe Component -> DONE
-- "Recipe doesn't exist" message
+- "Recipe doesn't exist" message -> DONE
 - Display recipe info -> DONE
 - Display Ingredients -> DONE
 - Display image -> DONE

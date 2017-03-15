@@ -12,7 +12,7 @@ class RecipeListContainer extends React.Component {
       displayedRecipes: [],
       currentPage: 0,
       recipesPerPage: 10,
-      recipesLoaded: false,
+      recipesNotFound: false,
       filterString: '',
       cookingTimeFilter: Number.POSITIVE_INFINITY
     };
@@ -24,11 +24,15 @@ class RecipeListContainer extends React.Component {
     Request.get(url).end((err, response) => {
       if (err) {
         console.log('There was an error fetching from API', err);
+        if (err.status === 404) {
+          this.setState({
+            recipesNotFound: true
+          });
+        }
       } else if (response) {
         this.setState({
           allRecipes: response.body,
-          displayedRecipes: response.body,
-          recipesLoaded: true
+          displayedRecipes: response.body
         });
       }
     });
@@ -81,21 +85,19 @@ class RecipeListContainer extends React.Component {
   }
 
   render() {
-    if (this.state.recipesLoaded) {
+    if (this.recipesAvailable()) {
       return (
         <div className="recipe-list-container">
           <RecipeFilter
             updateFilterString={this.updateFilterString.bind(this)}
             updateMaxCookingTime={this.updateMaxCookingTime.bind(this)} />
-          { this.recipesAvailable() ?
-            this.renderRecipeList() :
-            this.renderNoRecipesMessage() }
+          { this.renderRecipeList() }
         </div>
       );
+    } else if (this.state.recipesNotFound) {
+      return this.renderNoRecipesMessage();
     } else {
-      return (
-        <div>Loading recipes...</div>
-      );
+      return this.renderLoadingRecipes();
     }
   }
 
@@ -109,6 +111,12 @@ class RecipeListContainer extends React.Component {
         goToPreviousPage={this.goToPreviousPage.bind(this)}
         currentPage={this.state.currentPage}
         pageSize={this.state.recipesPerPage} />
+    );
+  }
+
+  renderLoadingRecipes() {
+    return (
+      <div>Loading recipes...</div>
     );
   }
 

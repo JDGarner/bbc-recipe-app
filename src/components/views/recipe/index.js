@@ -8,8 +8,8 @@ export default class Recipe extends React.Component {
   constructor() {
     super();
     this.state = {
-      recipe: {},
-      recipeLoaded: false
+      recipe: null,
+      recipeNotFound: false
     };
   }
 
@@ -19,43 +19,64 @@ export default class Recipe extends React.Component {
     Request.get(url).end((err, response) => {
       if (err) {
         console.log('There was an error fetching from API', err);
+        if (err.status === 404) {
+          this.setState({
+            recipeNotFound: true
+          });
+        }
       } else if (response) {
         this.setState({
-          recipe: response.body,
-          recipeLoaded: true
+          recipe: response.body
         });
       }
     });
   }
 
   render() {
-    if (this.state.recipeLoaded) {
-      let imgPath = config.cdnHost + this.state.recipe.imageurl;
-
-      return (
-        <div className="recipe">
-          <h3>Name: {this.state.recipe.name}</h3>
-          <h3>Cooking Time: {this.state.recipe.cookingtime} Minutes</h3>
-          <img src={imgPath}/>
-          <h3>Ingredients:</h3>
-          { this.renderIngredients(this.state.recipe.ingredients) }
-          <Link to="/">Back to List</Link>
-        </div>
-      );
+    if (this.state.recipe) {
+      return this.renderRecipe(this.state.recipe);
+    } else if (this.state.recipeNotFound) {
+      return this.renderRecipeNotFound();
     } else {
       return null;
     }
   }
 
-  renderIngredients(ingredients) {
+  renderRecipeNotFound() {
     return (
-      <ul className="ingredients-list"> {
-        ingredients.map((i, key) => {
-          return (
-            <li key={key} >{i.quantity} {i.quantityType} {i.name}</li>
-          );
-        })
-      } </ul>
+      <div>Sorry, this recipe doesn't exist or may have been removed</div>
     );
+  }
+
+  renderRecipe(recipe) {
+    let imgPath = config.cdnHost + recipe.imageurl;
+
+    return (
+      <div className="recipe">
+        <h3>Name: {recipe.name}</h3>
+        <h3>Cooking Time: {recipe.cookingtime} Minutes</h3>
+        <img src={imgPath}/>
+        <h3>Ingredients:</h3>
+        { this.renderIngredients(recipe.ingredients) }
+        <Link to="/">Back to List</Link>
+      </div>
+    );
+  }
+
+  renderIngredients(ingredients) {
+    if (ingredients) {
+      return (
+        <ul className="ingredients-list"> {
+          ingredients.map((i, key) => {
+            return (
+              <li key={key} >{i.quantity} {i.quantityType} {i.name}</li>
+            );
+          })
+        } </ul>
+      );
+    } else {
+      return null;
+    }
+
   }
 }
