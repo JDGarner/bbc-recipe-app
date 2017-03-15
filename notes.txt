@@ -22,9 +22,9 @@ Recipe:
 - Create Recipe Component -> DONE
 - "Recipe doesn't exist" message
 - Display recipe info -> DONE
-- Display Ingredients
-- Display image
-- Styling
+- Display Ingredients -> DONE
+- Display image -> DONE
+- Styling -> DONE
 
 Recipe Filter:
 - Create Recipe-Filter Component -> DONE
@@ -33,7 +33,7 @@ Recipe Filter:
 - Filter by ingredient -> DONE
 - Filter by cooking time -> DONE
 - Filter for starred recipes
-- Styling
+- Styling -> DONE
 
 Starred Recipes:
 - Create star component
@@ -43,6 +43,10 @@ Starred Recipes:
 API:
 - Create API call for all recipes -> DONE
 - Create API call for recipe by id -> DONE
+
+Other:
+- Add images to cdn -> DONE
+- Add more recipes/ingredients to db
 
 Tests:
 - Setup testing framework -> DONE
