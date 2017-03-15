@@ -38,7 +38,7 @@ Recipe Filter:
 Starred Recipes:
 - Create star component -> DONE
 - Store star data in local storage -> DONE
-- Styling
+- Styling -> DONE
 
 API:
 - Create API call for all recipes -> DONE

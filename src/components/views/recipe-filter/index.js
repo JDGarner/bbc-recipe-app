@@ -42,6 +42,7 @@ export default class RecipeFilter extends React.Component {
       <div className="recipe-filter">
         <input
           type="text"
+          className="recipe-search"
           onChange={this.onChangeFilterString.bind(this)}
           placeholder="Search for Recipes" />
         <Select
@@ -50,14 +51,14 @@ export default class RecipeFilter extends React.Component {
           options={this.maxCookingTimeOptions}
           onChange={this.onChangeMaxCookingTime.bind(this)}
           placeholder="Maximum Cooking Time" />
-        <label>
-          Show Favourite Recipes:
+        <div className="checkbox-favourites">
+          <label>Show Favourite Recipes:</label>
           <input
             type="checkbox"
             value={this.state.checkBoxChecked}
             checked={this.state.checkBoxChecked}
             onChange={this.onChangeShowStarred.bind(this)} />
-        </label>
+        </div>
       </div>
     );
   }
